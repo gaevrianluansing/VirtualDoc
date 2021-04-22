@@ -59,8 +59,8 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
 }
 .footer {
   position: absolute;
@@ -73,18 +73,6 @@ body {
 /* Right-aligned section inside the top navigation */
 .topnav-right {
     float: right;
-}
-.jumbotron {
-    background-image: url(../img/Doctor2.jpg);
-    background-attachment: scroll;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 25% top;
-    padding-top: 50px;
-    height: 450px;
-}
-#aboutusbody {
-    background-image: url(../../wwwroot/img/aboutusbg.jpg);
 }
 
     
