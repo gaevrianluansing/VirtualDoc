@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>PatientList</h1>
+<h1>Patient List</h1>
 
 <p>
     <a asp-action="PatientCreate">Create New</a>
 </p>
-<table class="table">
+<table id="records" class="table">
     <thead>
         <tr>
             <th>
@@ -77,10 +77,20 @@
             </td>
             <td>
                 <a asp-action="PatientEdit" asp-route-id="@item.PatientID">Edit</a> |
-                
                 <a asp-action="Delete" asp-route-id="@item.PatientID">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts{
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#records').DataTable();
+        });
+    </script>
+
+} 
