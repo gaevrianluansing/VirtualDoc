@@ -2,54 +2,44 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    body {
+        background-image: url('../img/3.jpg');
+        background-size: cover;
+    }
 
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col col-3">
-                
-            </div>
-            <div class="col col-9">
-                <h2>Welcome To Virtual Doc!</h2>
-                <h3>Introduction</h3>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="jumbotron-fluid" style="background-color: #DBBF70">
-    <div class="row">
-        <div class="col col-6">
-            <img src="~/img/patienthd1.jpg" style="position: center; width: 100%;" />
-        </div>
-        <div class="col col-6" style="text-align: center; padding-top: 100px; padding-left: 100px; padding-right: 100px;">
-            <h3>Schedule Now</h3>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-        </div>
-    </div>
-</div>
-<div class="jumbotron-fluid" style="background-color: #DBBF70;">
-    <div class="row">
-        <div class="col col-6" style="text-align: center; padding-top: 100px; padding-left: 100px; padding-right: 100px;">
-            <h3>About us</h3>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-        </div>
-        <div class="col col-6">
-            <img src="~/img/doctor4.jpg" style="position: center; width: 100%;" />
-        </div>
-    </div>
+    .jumbotron {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        background: none;
+        background-position: center;
+        padding-top: 230px;
+    }
+
+    .button {
+        background-color: #DBBF70;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+    }
+
+    .button4 {
+        border-radius: 12px;
+    }
+</style>
+
+<div class="jumbotron jumbotron-fluid" id="home">
+    <h1>Welcome To Virtual Doc!</h1>
+    <p class="lead">How Can We Help?</p>
+    <p class="lead">
+        <a class=" btn button button4" href="#" role="button">Consult Now!</a>
+    </p>
 </div>
 
-<footer>
-  <br>
-  <center><p><b>Thank You for using Virtual Doc!</b></p></center>
-	<center>
-	<img src="https://www.gstatic.com/kpui/social/fb_32x32.png" alt="Facebook" style="height:30px; width:30px; margin: 5px;">
-	<img src="https://www.gstatic.com/kpui/social/twitter_32x32.png" alt="Twitter" style="height:30px; width:30px; margin: 5px;">
-	<img src="http://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png" alt="Instagram" style="height:30px; width:30px; margin: 5px;"></center>
-    <center><p style="color: darkgrey; font-size: 13px;">Copyright 2021 Virtual Doc. All Rights Reserved</p></center>
-</footer>
 
