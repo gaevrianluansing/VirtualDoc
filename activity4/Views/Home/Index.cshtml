@@ -34,6 +34,41 @@
     .button4 {
         border-radius: 8px;
     }
+    
+    .callout {
+        position: fixed;
+        bottom: 30%;
+        right: 30%;
+        top: 30%;
+        left: 30%;
+    }
+
+    .callout-header {
+        padding: 30px 20px;
+        background-image: url("https://i.pinimg.com/originals/b1/3a/ee/b13aee0f0c8657f6a840557cbbba0b70.jpg");
+        font-size: 30px;
+        color: white;
+    }
+
+    .callout-container {
+        padding: 30px 70px;
+        background-color: #ccc;
+        color: black;
+        box-shadow: 10px 8px black;
+    }
+
+    .closebtn {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+    }
+
+        .closebtn:hover {
+            color: lightgrey;
+        }
 </style>
 
 <div class="jumbotron jumbotron-fluid" id="home">
@@ -44,4 +79,15 @@
     </p>
 </div>
 
+<div class="callout">
+    <div class="callout-header">Hey there! Sign In as Admin?</div>
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+    <div class="callout-container">
+        <p style="font-size:15px">
+            Welcome to Virtual Doc, do you like to appoint for consultations today?
+            Check out what Virtual Doc has a lot in store for you.
+            Consult now!
+        </p>
+    </div>
+</div>
 
