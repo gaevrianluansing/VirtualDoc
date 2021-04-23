@@ -4,14 +4,27 @@
     ViewData["Title"] = "PatientEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .row {
+        padding: 20px;
 
-<h1>PatientEdit</h1>
+        text-align: left;
+    }
 
-<h4>Patient</h4>
-<hr />
+    .row2 {
+        background-color: #E2E5DE;
+    }
+    .h1 {
+        margin-top: 100px;
+    }
+</style>
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-2"></div>
+    <div class="col-md-3 row2">
         <form asp-action="PatientEdit">
+            <h1 class="h1">Patient Edit</h1>
+            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PatientID" />
             <div class="form-group">
