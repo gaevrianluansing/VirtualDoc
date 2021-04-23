@@ -1,4 +1,4 @@
-﻿@model IEnumerable<activity4.Models.Doctorsform>
+﻿@model activity4.Models.DoctorViewModel
 
 @{
     ViewData["Title"] = "DoctorsList";
@@ -14,41 +14,41 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DoctorName)
+                Doctor Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DoctorType)
+                Doctor Type
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContactNum)
+               Contact Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Schedule)
+                Schedule
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MOP)
+                Mode of Payment
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.DoctorsList)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DoctorName)
+                    @item.User.FirstName @item.User.LastName
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DoctorType)
+                    @item.DoctorType
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ContactNum)
+                    @item.User.PhoneNumber
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Schedule)
+                    @item.Schedule
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MOP)
+                    @item.MOP
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.DoctorID">Edit</a> |

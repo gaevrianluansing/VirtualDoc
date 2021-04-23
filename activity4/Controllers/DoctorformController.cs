@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using activity4.Data;
 using activity4.Models;
-
-
+using Microsoft.AspNetCore.Identity;
 
 namespace activity4.Controllers
 {
@@ -21,25 +20,42 @@ namespace activity4.Controllers
         }
         public IActionResult DoctorsList()
         {
-            var doclist = _context.Doctorsforms.ToList();
-            return View(doclist);
+            var doclist = _context.Doctorsforms.Include(d => d.User).ToList();
+            var model = new DoctorViewModel
+            {
+                DoctorsList = doclist
+            };
+            return View(model);
         }
         public IActionResult Doctors()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Doctors(Doctorsform forms)
+        public IActionResult Doctors(DoctorViewModel record)
         {
-            var form = new Doctorsform()
+            var passwordHasher = new PasswordHasher<ApplicationUser>();
+            var user = new ApplicationUser
             {
-                DoctorName = forms.DoctorName,
-                DoctorType = forms.DoctorType,
-                ContactNum = forms.ContactNum,
-                Schedule = forms.Schedule,
-                MOP = forms.MOP
+                FirstName = record.FirstName,
+                LastName = record.LastName,
+                Email = record.Email,
+                EmailConfirmed = true,
+                PhoneNumber = record.ContactNo,
+                UserType = 2
             };
-            _context.Doctorsforms.Add(form);
+            user.PasswordHash = passwordHasher.HashPassword(user, "temppassword");
+
+            var doctor = new Doctorsform
+            {
+                 User = user,
+                 DoctorType = record.DoctorType,
+                 Schedule = record.Schedule,
+                 MOP = record.MOP
+            };
+
+            _context.Users.Add(user);
+            _context.Doctorsforms.Add(doctor);
             _context.SaveChanges();
 
             return RedirectToAction("DoctorsList");
@@ -51,27 +67,44 @@ namespace activity4.Controllers
                 return RedirectToAction("DoctorsList");
             }
 
-            var form = _context.Doctorsforms.Where(o => o.DoctorID == id).SingleOrDefault();
+            var doctor = _context.Doctorsforms.Include(o => o.User).Where(o => o.DoctorID == id).SingleOrDefault();
 
-            if (form == null)
+            if (doctor == null)
             {
                 return RedirectToAction("DoctorsList");
             }
-            return View(form);
+
+            var model = new DoctorViewModel()
+            {
+                DoctorID = doctor.DoctorID,
+                FirstName = doctor.User.FirstName,
+                LastName = doctor.User.LastName,
+                Email = doctor.User.Email,
+                ContactNo = doctor.User.PhoneNumber,
+                DoctorType = doctor.DoctorType,
+                Schedule = doctor.Schedule,
+                MOP = doctor.MOP
+            };
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, Doctorsform forms)
+        public IActionResult Edit(int? id, DoctorViewModel record)
         {
-            var form = _context.Doctorsforms.Where(o => o.DoctorID == id).SingleOrDefault();
-            form.DoctorName = forms.DoctorName;
-            form.DoctorType = forms.DoctorType;
-            form.ContactNum = forms.ContactNum;
-            form.Schedule = forms.Schedule;
-            form.MOP = forms.MOP;
+            var doctor = _context.Doctorsforms.Include(d => d.User).Where(d => d.DoctorID == id).SingleOrDefault();
+            var user = _context.Users.Where(u => u.Id == doctor.User.Id).SingleOrDefault();
 
-            _context.Doctorsforms.Update(form);
+            doctor.DoctorType = record.DoctorType;
+            doctor.Schedule = record.Schedule;
+            doctor.MOP = record.MOP;
+            _context.Doctorsforms.Update(doctor);
+
+            user.FirstName = record.FirstName;
+            user.LastName = record.LastName;
+            user.Email = record.Email;
+            user.PhoneNumber = record.ContactNo;
+            _context.Users.Update(user);
+
             _context.SaveChanges();
-
             return RedirectToAction("DoctorsList");
         }
         public IActionResult Delete(int? id)
