@@ -4,12 +4,44 @@
     ViewData["Title"] = "PatientList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
 
-<h1>Patient List</h1>
+    .h1 {
+        margin-top: 120px;
+        margin-right: 20px;
+        margin-left: 20px;
+        text-align: center;
+        margin-bottom: 0px;
+    }
 
-<p>
-    <a asp-action="PatientCreate">Create New</a>
-</p>
+    .a {
+        margin-top: 100px;
+        margin-right: 20px;
+        margin-left: 40px;
+        margin-bottom: 0px;
+    }
+
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        tbody tr:hover {
+            background-color: #ddd;
+        }
+
+        .table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            color: black;
+        }
+</style>
+ <div class="container">    
+<h1 class="h1">Patient List</h1>
+<a class="a" asp-action="PatientCreate">Create New</a>
+<hr />
+
 <table id="records" class="table">
     <thead>
         <tr>
@@ -94,3 +126,4 @@
     </script>
 
 } 
+     </div>
