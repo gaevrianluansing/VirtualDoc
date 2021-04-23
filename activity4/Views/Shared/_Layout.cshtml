@@ -15,6 +15,7 @@
     <script src="https://use.fontawesome.com/7ae8cdf44d.js"></script>
     <link rel="icon" href="~/img/icon.png">
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark bg-primary fixed-top">
@@ -32,16 +33,17 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Doctors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contactus">Contact us</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Patient" asp-action="PatientList">Patient List</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Doctorform" asp-action="DoctorsList">Doctors List</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Contactus">Contact us</a>
+                            </div>
                         </li>
 
                         @if (SignInManager.IsSignedIn(User))
@@ -61,19 +63,16 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <h6><a asp-area="Identity" asp-page="/Account/Login" class="dropdown-item" >Login</a></h6>
-                                    <h6><a asp-area="Identity" asp-page="/Account/Register" class="dropdown-item" >Register</a></h6>
+                                    <h6><a asp-area="Identity" asp-page="/Account/Login" class="dropdown-item">Login</a></h6>
+                                    <h6><a asp-area="Identity" asp-page="/Account/Register" class="dropdown-item">Register</a></h6>
                                 </div>
                             </li>
                         }
-
-
-
                     </ul>
-                   
+
                     <form id="logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                         <ul>
-                            <li class="menu-item"><a href="#" onclick="document.getElementById('logout').submit(); return false;">Logout</a></li>
+                            <li class="menu-item"><a class="nav-link text-light"href="#" style="color:white" onclick="document.getElementById('logout').submit(); return false;">Logout</a></li>
                         </ul>
                     </form>
                 </div>
