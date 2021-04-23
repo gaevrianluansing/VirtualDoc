@@ -6,12 +6,16 @@
 }
 
 <style>
+.row {
+  margin-top: 100px;
+}
+
 .form {
-  padding: 15px;
-  border: 2px solid black;
+  padding: 20px;
+  border: 1px solid black;
   border-radius: 25px;
   background-color:white;
-  text-align:center;
+  text-align:left;
 }
 
 body{
@@ -24,13 +28,13 @@ label, h3, h6{
 
 </style>
 
-<center><img src="~/img/icon.png" width="20" height="20"></center>
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4 form">
+        <center><img src="~/img/icon.png" width="50" height="50"></center><br />
         <form asp-action="PatientCreate">
-            <h3>Create new Patient List</h3>
-            <h6>Please fill in this form to create.</h6>
+            <h3 style="text-align:center">Create new Patient List</h3><hr />
+            <h6 style="text-align:center">Please fill in this form to create.</h6>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Username" class="control-label"></label>
@@ -85,13 +89,14 @@ label, h3, h6{
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+	    <div>
+    		<a asp-action="PatientList">Back to List</a>
+	    </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="PatientList">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
