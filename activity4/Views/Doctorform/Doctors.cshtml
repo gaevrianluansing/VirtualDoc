@@ -4,14 +4,36 @@
     ViewData["Title"] = "Doctors";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+.row {
+  margin-top: 100px;
+}
 
-<h1>Doctors</h1>
+.form {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color:white;
+  text-align:left;
+}
 
-<h4>Doctorsform</h4>
-<hr />
+body{
+	background-color: #D4D4D4;
+}
+
+label, h3, h6{
+	font-family:Arial;
+}
+
+</style>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 form">
+        <center><img src="~/img/icon.png" width="50" height="50"></center><br />
         <form asp-action="Doctors">
+            <h3 style="text-align:center">Create new Doctor List</h3>
+            <hr />
+            <h6 style="text-align:center">Please fill in this form.</h6>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DoctorName" class="control-label"></label>
@@ -41,13 +63,14 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
