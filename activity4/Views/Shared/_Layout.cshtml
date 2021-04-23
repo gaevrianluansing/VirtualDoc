@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -39,36 +43,59 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Doctorform" asp-action="DoctorsList">Doctors List</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <h6><a class="dropdown-item" href="#">Login</a></h6>
-                                <h6><a class="dropdown-item" href="#">Register</a></h6>
-                            </div>
-                        </li>
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <h6><a class="dropdown-item" href="#">Login</a></h6>
+                                    <h6><a class="dropdown-item" href="#">Register</a></h6>
+                                </div>
+                            </li>
+
+
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <h6><a asp-area="Identity" asp-page="/Account/Login" class="dropdown-item" href="#">Login</a></h6>
+                                    <h6><a asp-area="Identity" asp-page="/Account/Login" class="dropdown-item" href="#">Register</a></h6>
+                                </div>
+                            </li>
+                        }
+
+
 
                     </ul>
-
+                   
+                    <form id="logout" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <ul>
+                            <li class="menu-item"><a href="#" onclick="document.getElementById('logout').submit(); return false;">Logout</a></li>
+                        </ul>
+                    </form>
                 </div>
             </div>
-            </nav>
-</header>
-    
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    
+        </nav>
+    </header>
 
-        <footer>
-            <br>
-            <center><h6><b>Thank You for using Virtual Doc!</b></h6></center>
-            <center>
-                <img src="https://www.gstatic.com/kpui/social/fb_32x32.png" alt="Facebook" style="height:30px; width:30px; margin: 5px;">
-                <img src="https://www.gstatic.com/kpui/social/twitter_32x32.png" alt="Twitter" style="height:30px; width:30px; margin: 5px;">
-                <img src="http://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png" alt="Instagram" style="height:30px; width:30px; margin: 5px;">
-            </center>
-            <center><p style="color: darkgrey; font-size: 13px;">Copyright 2021 Virtual Doc. All Rights Reserved</p></center>
-        </footer>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+
+    <footer>
+        <br>
+        <center><h6><b>Thank You for using Virtual Doc!</b></h6></center>
+        <center>
+            <img src="https://www.gstatic.com/kpui/social/fb_32x32.png" alt="Facebook" style="height:30px; width:30px; margin: 5px;">
+            <img src="https://www.gstatic.com/kpui/social/twitter_32x32.png" alt="Twitter" style="height:30px; width:30px; margin: 5px;">
+            <img src="http://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png" alt="Instagram" style="height:30px; width:30px; margin: 5px;">
+        </center>
+        <center><p style="color: darkgrey; font-size: 13px;">Copyright 2021 Virtual Doc. All Rights Reserved</p></center>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
