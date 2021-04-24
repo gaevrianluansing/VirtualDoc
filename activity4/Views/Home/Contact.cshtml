@@ -4,56 +4,91 @@
     ViewData["Title"] = "Contact";
 }
 
-<br />
-<br />
-<br />
-<br />
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4 form">
-        <form asp-action="Contact">
-            @if (ViewBag.Message != null)
-            {
-                <div class="alert alert-success">
-                    @ViewBag.Message
-                </div>
-            }
-            <br />
-            <br />
-            <br />
-            <h3 style="text-align:center">Contact Form</h3>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SenderName" class="control-label"></label>
-                <input asp-for="SenderName" class="form-control" />
-                <span asp-validation-for="SenderName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactNo" class="control-label"></label>
-                <input asp-for="ContactNo" class="form-control" />
-                <span asp-validation-for="ContactNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subject" class="control-label"></label>
-                <input asp-for="Subject" class="form-control" />
-                <span asp-validation-for="Subject" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Message" class="control-label"></label>
-                <textarea asp-for="Message" class="form-control"></textarea>
-                <span asp-validation-for="Message" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Back to Home</a>
-            </div>
-        </form>
+<style>
+
+    #doc {
+        margin-top: 150px;
+        margin-left: 0px;
+        
+    }
+    #box {
+        border-radius: 10px;
+        padding-bottom: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-top: 150px;
+        margin-right: 150px;
+        margin-left: 70px;
+    }
+    body {
+        background-color: azure;
+    }
+</style>
+<div class="row" id="contact">
+    <div class="col-md-2"></div>
+    <div class="container col-md-4" id="doc">
+        <img src="~/img/14.jpg" width="500" height="720" class="responsive" />
     </div>
+    <div class="col-md-6 form">
+        <div class="row">
+            <form asp-action="Contact" style="background-color: #DBBF70" id="box">
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-success">
+                        @ViewBag.Message
+                    </div>
+                }
+                <br />
+                <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+                <!--Section description-->
+                <p class="text-center w-responsive mx-auto mb-5 lead">
+                    Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+                    a matter of hours to help you.
+                </p>
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="SenderName" class="control-label"></label>
+                            <input asp-for="SenderName" class="form-control" />
+                            <span asp-validation-for="SenderName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ContactNo" class="control-label"></label>
+                    <input asp-for="ContactNo" class="form-control" />
+                    <span asp-validation-for="ContactNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label"></label>
+                    <textarea asp-for="Message" class="form-control"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-light" />
+                    <a asp-action="Index" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
 </div>
 
 
