@@ -20,6 +20,7 @@ namespace activity4.Models
         [Required(ErrorMessage = "Schedule is required")]
         [Display(Name = "Schedule")]
         public string Schedule { get; set; }
+
         [Required(ErrorMessage = "MOP is required")]
         [Display(Name = "Mode Of Payment")]
         public string MOP { get; set; }
