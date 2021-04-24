@@ -36,11 +36,13 @@
         color: black;
     }
 </style>
+
 <div class="container">
 <h1 class="h1">Doctors List</h1>
 <a asp-action="Doctors">Create New</a>
 <hr />
-<table id="records" class="table">
+
+<table id="doctors" class="table">
     <thead>
         <tr>
             <th>
@@ -94,7 +96,7 @@
     <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
     <script>
         $(document).ready(function () {
-            $('#records').DataTable();
+            $('#doctors').DataTable();
         });
     </script>
 
